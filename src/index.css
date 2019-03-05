@@ -1,4 +1,22 @@
+  body{
+    font-family: cursive;
+    width: fit-content;
+  }
   .capitalize{
     text-transform: capitalize;
+  }
+  .header{
+    
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .header, .footer{
+    padding: 10px 0;
+    text-align: center;
+  }
+  table{
+    padding: 10px;
+    background: #333;
+    color: #adffff;
   }
   

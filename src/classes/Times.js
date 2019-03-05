@@ -6,7 +6,7 @@ export default class Times{
         let canLight = new Date(sunset);
 
         //Set minutes to 18 earlier, recast back to dateTime and get timestring
-        canLight = (new Date(canLight.setMinutes(canLight.getMinutes() - 18))).toLocaleTimeString(); 
+        canLight = new Date(canLight.setMinutes(canLight.getMinutes() - 18)).toLocaleTimeString(); 
         return canLight;
     }
 
@@ -16,37 +16,29 @@ export default class Times{
         
         //Get plag - 1 1/4 halachic hours b4 sunset
         const msPlagB4Sunset = msPerHHour + (msPerHHour / 4);
-        const plag = new Date(Date(sunset - msPlagB4Sunset)).toLocaleTimeString();
-        console.log(plag);
-        const latestCandle = 1234567
-        //new Date(Date(60000 * 30 + sunset - msPlagB4Sunset )).toLocaleTimeString();
-        // console.log(plag);
-        return {plag, latestCandle};
+        const plag = new Date(sunset - msPlagB4Sunset).toLocaleTimeString();
+        const latestCandle = new Date(60000 * 30 + sunset - msPlagB4Sunset ).toLocaleTimeString();
+        const mincha = new Date(sunset - msPlagB4Sunset - (60000 * 10 )).toLocaleTimeString();
+
+        return {plag, latestCandle, mincha};
     }
 
 
-    // getSunriseSunset(position){
-    //     const times = {
-    //         sunset:null,
-    //         sunrise:null,
-    //         candleLight:null 
-    //     };
-    //     var request = new XMLHttpRequest();
+    getSunriseSunset(position){
+        const thisChart = this;
+        var request = new XMLHttpRequest();
         
-    //     // Open a new connection, using the GET request on the URL endpoint
-    //     request.open('GET', 'https://api.sunrise-sunset.org/json?lat=' + 
-    //     String(position.coords.latitude)  + '&lng=' + String(position.coords.longitude) +
-    //     '&formatted=0' , true);
+        // Open a new connection, using the GET request on the URL endpoint
+        request.open('GET', 'https://api.sunrise-sunset.org/json?lat=' + 
+        String(position.coords.latitude)  + '&lng=' + String(position.coords.longitude) +
+        '&date=friday&formatted=0' , true);
 
-    //     request.onload = function () {
-    //         const data = JSON.parse(this.response);
-    //         times.sunrise = new Date(Date.parse(data.results.sunrise)).toLocaleTimeString(); 
-    //         times.sunset = new Date(Date.parse(data.results.sunset)).toLocaleTimeString(); 
-    //         times.candleLight = new Times().getCandleLighting(Date.parse(data.results.sunset));
-    //         return times;
-    //     }
+        request.onload = function () {
+            const data = JSON.parse(this.response);
+            thisChart.setTimes(data, thisChart);
+        }
 
-    //     // Send request
-    //     request.send();
-    // }
+        // Send request
+        request.send();
+    }
 }

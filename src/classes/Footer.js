@@ -3,6 +3,6 @@ import React from 'react';
 
 export default class Footer extends React.Component{
     render(){
-        return <div>I am a footer!</div>;
+        return <div className="footer">&copy;2019 by Msommers</div>;
     }
 }
