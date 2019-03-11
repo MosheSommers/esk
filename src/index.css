@@ -7,8 +7,12 @@
   }
   .header{
     
-    font-size: 22px;
+    font-size: 17px;
     font-weight: 700;
+  }
+  .header img{
+    vertical-align: middle;
+    padding-left: 3px;
   }
   .header, .footer{
     padding: 10px 0;
@@ -18,5 +22,15 @@
     padding: 10px;
     background: #333;
     color: #adffff;
+  }
+
+  @media print{
+    .header,.footer{
+      display: none;
+    }
+    table{color: black;}
+    body{
+      font-size: 30px;
+    }
   }
   

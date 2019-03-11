@@ -1,4 +1,5 @@
 import React from 'react';
+import Print from './Print';
 //import ReactDOM from 'react-dom';
 
 export default class Footer extends React.Component{

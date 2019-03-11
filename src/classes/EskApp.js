@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Chart from './Chart';
+import Print from './Print';
 //import Times from './Times';
 
 export default class EskApp extends React.Component{
