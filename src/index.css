@@ -18,6 +18,11 @@
     padding: 10px 0;
     text-align: center;
   }
+  .footer img{
+    vertical-align: middle;
+    float: right;
+    padding-right: 10px;
+  }
   table{
     padding: 10px;
     background: #333;

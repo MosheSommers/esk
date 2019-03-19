@@ -1,5 +1,8 @@
 export default class Times{
-
+    constructor(minchaTime, lightingTime){
+        this.minchaTime = minchaTime;
+        this.lightingTime = lightingTime;
+    }
     //getCandleLighting -- 18 minutes before sunset excepts a timestamp as parameter
     getCandleLighting(sunset){
         //Change from timestamp to DateTime object
@@ -16,11 +19,9 @@ export default class Times{
         
         //Get plag - 1 1/4 halachic hours b4 sunset
         const msPlagB4Sunset = msPerHHour + (msPerHHour / 4);
-        const plag = new Date(sunset - msPlagB4Sunset).toLocaleTimeString();
-        const latestCandle = new Date(60000 * 30 + sunset - msPlagB4Sunset ).toLocaleTimeString();
-        const mincha = new Date(sunset - msPlagB4Sunset - (60000 * 10 )).toLocaleTimeString();
+        const plagMs = sunset - msPlagB4Sunset;
 
-        return {plag, latestCandle, mincha};
+        return plagMs;
     }
 
 
